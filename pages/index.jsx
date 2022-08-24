@@ -40,7 +40,8 @@ export default function Home({ homePage, pageIntro, services, myWork }) {
 				/>
 				<SideBySideText
 					largeText={homePage.leadText.largeText}
-					smallText={homePage.leadText.smallText}
+					smallText1={homePage.leadText.smallText1}
+					smallText2={homePage.leadText.smallText2}
 				/>
 				<TripleExplainer
 					title={services.title}
