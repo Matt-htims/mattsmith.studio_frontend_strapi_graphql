@@ -7,7 +7,7 @@ export default function InfoGallery({ title, contentArray }) {
 			<div className="content">
 				{contentArray &&
 					contentArray.map((content) => (
-						<div key={content.attributes.id}>
+						<div key={content.id}>
 							<Image
 								src={
 									process.env.NEXT_PUBLIC_STRAPI_URL +

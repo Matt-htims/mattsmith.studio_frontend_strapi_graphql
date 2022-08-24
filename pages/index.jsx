@@ -7,6 +7,7 @@ import PageIntro from "../components/PageIntro";
 import SideBySideText from "../components/SideBySideText";
 import TripleExplainer from "../components/TripleExplainer";
 import InfoGallery from "../components/InfoGallery";
+import CTAsection from "../components/CTAsection";
 
 export default function Home({ homePage, pageIntro, services, myWork }) {
 	console.log(homePage);
@@ -46,6 +47,12 @@ export default function Home({ homePage, pageIntro, services, myWork }) {
 					contentArray={services.individualServices}
 				/>
 				<InfoGallery title={myWork.title} contentArray={myWork.works.data} />
+				<CTAsection
+					cta={homePage.contact.mainText}
+					body={homePage.contact.subText}
+					buttonLink={homePage.contact.buttonLink}
+					buttonText={homePage.contact.buttonText}
+				/>
 			</main>
 
 			<footer className="">
