@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function InfoGallery({ title, contentArray }) {
 	return (
-		<div className="lg:mt-28 mt-24">
+		<div className="lg:mt-26 mt-24">
 			<h2 className="font-spaceGrotesk font-medium md:text-5xl text-4xl text-center mb-16">
 				{title}
 			</h2>
@@ -19,8 +19,8 @@ export default function InfoGallery({ title, contentArray }) {
 									content.attributes.image.data.attributes.url
 								}
 								alt="Triple explainer image"
-								height={808}
-								width={1060}
+								height={content.attributes.image.data.attributes.height}
+								width={content.attributes.image.data.attributes.width}
 							/>
 							<div className="text bg-textBlue-dark text-offWhite px-6 pt-8 pb-7 h-full space-y-3">
 								<h3 className="font-spaceGrotesk font-medium text-xl">

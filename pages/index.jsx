@@ -10,13 +10,13 @@ import InfoGallery from "../components/InfoGallery";
 import CTAsection from "../components/CTAsection";
 
 export default function Home({ homePage, pageIntro, services, myWork }) {
-	console.log(homePage);
-	console.log("------------------------------------");
-	console.log(pageIntro);
-	console.log("------------------------------------");
-	console.log(services);
-	console.log("------------------------------------");
-	console.log(myWork);
+	// console.log(homePage);
+	// console.log("------------------------------------");
+	// console.log(pageIntro);
+	// console.log("------------------------------------");
+	// console.log(services);
+	// console.log("------------------------------------");
+	// console.log(myWork);
 	return (
 		<div className="">
 			<Head>

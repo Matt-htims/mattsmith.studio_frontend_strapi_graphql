@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function TripleExplainer({ title, contentArray }) {
 	return (
-		<div className="bg-lightBlue px-8 lg:py-20 pt-16 pb-4 lg:mt-28 mt-24 rounded-3xl drop-shadow-md">
+		<div className="bg-lightBlue px-8 lg:py-20 pt-16 pb-4 lg:mt-26 mt-24 rounded-3xl drop-shadow-md">
 			<h2 className="font-spaceGrotesk font-medium md:text-5xl text-4xl text-center md:mb-24 mb-16">
 				{title}
 			</h2>
