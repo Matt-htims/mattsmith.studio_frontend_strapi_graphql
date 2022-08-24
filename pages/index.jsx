@@ -6,6 +6,7 @@ import { fetcher } from "../lib/api";
 import PageIntro from "../components/PageIntro";
 import SideBySideText from "../components/SideBySideText";
 import TripleExplainer from "../components/TripleExplainer";
+import InfoGallery from "../components/InfoGallery";
 
 export default function Home({ homePage, pageIntro, services, myWork }) {
 	console.log(homePage);
@@ -44,6 +45,7 @@ export default function Home({ homePage, pageIntro, services, myWork }) {
 					title={services.title}
 					contentArray={services.individualServices}
 				/>
+				<InfoGallery title={myWork.title} contentArray={myWork.works.data} />
 			</main>
 
 			<footer className="">
