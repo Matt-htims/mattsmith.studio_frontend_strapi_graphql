@@ -14,6 +14,7 @@ module.exports = {
 				textBlue: {
 					dark: "#1C264A",
 					DEFAULT: "#2E3552",
+					light: "#656b82",
 				},
 				ctaOrange: "#FF821B",
 				lightBlue: "#F3F3F8",

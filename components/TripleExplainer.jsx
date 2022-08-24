@@ -3,28 +3,41 @@ import Image from "next/image";
 
 export default function TripleExplainer({ title, contentArray }) {
 	return (
-		<div>
-			<h2>{title}</h2>
-			<div className="content">
+		<div className="bg-lightBlue px-8 lg:py-20 pt-16 pb-4 lg:mt-28 mt-24 rounded-3xl drop-shadow-md">
+			<h2 className="font-spaceGrotesk font-medium md:text-5xl text-4xl text-center md:mb-24 mb-16">
+				{title}
+			</h2>
+			<div className="content lg:flex justify-around items-center lg:space-y-0 space-y-16">
 				{contentArray &&
 					contentArray.map((content) => (
-						<div key={content.id}>
-							<Image
-								src={
-									process.env.NEXT_PUBLIC_STRAPI_URL +
-									content.image.data.attributes.url
-								}
-								alt="Triple explainer image"
-								height={80}
-								width={80}
-							/>
-							<div>
-								<h2>{content.title}</h2>
-								<p>{content.copy}</p>
+						<div
+							key={content.id}
+							className="text-center lg:border-b-0 border-b-2 border-[#DEE1ED] last:border-b-0 lg:pb-0 pb-16"
+						>
+							<div className="image mb-8">
+								<Image
+									src={
+										process.env.NEXT_PUBLIC_STRAPI_URL +
+										content.image.data.attributes.url
+									}
+									alt="Triple explainer image"
+									height={80}
+									width={80}
+								/>
 							</div>
-							<div className="bottomText">
-								<p>{content.bottomText}</p>
-								<p>{content.bottomText2}</p>
+							<div className="flex flex-col justify-between h-64">
+								<h2 className="font-spaceGrotesk font-medium text-2xl">
+									{content.title}
+								</h2>
+								<p className="font-light lg:w-10/12 m-auto pb-6">
+									{content.copy}
+								</p>
+								<div className="space-y-2">
+									<p className="text-textBlue-light font-light text-base">
+										{content.bottomText}
+									</p>
+									<p className="font-medium text-lg">{content.bottomText2}</p>
+								</div>
 							</div>
 						</div>
 					))}
