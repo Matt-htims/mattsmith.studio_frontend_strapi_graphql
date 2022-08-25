@@ -4,10 +4,9 @@ import { fetcher } from "../../lib/api";
 import { FiArrowLeft } from "react-icons/fi";
 
 export default function Post({ work }) {
-	console.log(work);
 	return (
 		<div className="my-14 max-w-screen-lg m-auto relative">
-			<div className="text-sm lg:block hidden absolute top-6 text-textBlue-light">
+			<div className="text-sm lg:block hidden absolute top-2 text-textBlue-light">
 				<Link href="/work">
 					<a className="flex items-center space-x-1">
 						<FiArrowLeft />
