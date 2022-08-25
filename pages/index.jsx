@@ -79,12 +79,6 @@ export async function getStaticProps() {
 		populate: ["myWorks", "myWorks.works", "myWorks.works.image"],
 	});
 
-	const res = await fetcher("works", {
-		fields: ["slug"],
-	});
-
-	console.log(res.data);
-
 	return {
 		props: {
 			homePage: homePageResponse.data.attributes,

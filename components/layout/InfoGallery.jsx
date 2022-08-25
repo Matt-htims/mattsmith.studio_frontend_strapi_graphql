@@ -5,19 +5,16 @@ export default function InfoGallery({ title, contentArray }) {
 	console.log(contentArray);
 	return (
 		<div className="lg:mt-26 mt-24">
-			<h2 className="font-spaceGrotesk font-medium md:text-5xl text-4xl text-center mb-16">
+			<h2 className="font-spaceGrotesk font-medium md:text-5xl text-4xl text-center mb-16 text-textBlue-dark">
 				{title}
 			</h2>
 			<div className="content lg:flex justify-between lg:space-x-10 lg:space-y-0 space-y-9">
 				{contentArray &&
 					contentArray.map((content) => (
-						<>
+						<div key={content.id}>
 							<Link href={`/work/${content.attributes.slug}`}>
 								<a>
-									<div
-										key={content.id}
-										className="overflow-hidden shadow-xl hover:shadow-2xl hover:cursor-pointer rounded-lg transition-all"
-									>
+									<div className="overflow-hidden shadow-xl hover:shadow-2xl hover:cursor-pointer rounded-lg transition-all">
 										<Image
 											src={
 												process.env.NEXT_PUBLIC_STRAPI_URL +
@@ -27,7 +24,7 @@ export default function InfoGallery({ title, contentArray }) {
 											height={content.attributes.image.data.attributes.height}
 											width={content.attributes.image.data.attributes.width}
 										/>
-										<div className="text bg-textBlue-dark text-offWhite px-6 pt-8 pb-7 h-full space-y-3">
+										<div className="text bg-textBlue-dark text-offWhite px-6 py-7 lg:h-36 h-32 space-y-3 flex flex-col justify-between">
 											<h3 className="font-spaceGrotesk font-medium text-xl">
 												{content.attributes.name}
 											</h3>
@@ -38,7 +35,7 @@ export default function InfoGallery({ title, contentArray }) {
 									</div>
 								</a>
 							</Link>
-						</>
+						</div>
 					))}
 			</div>
 		</div>
