@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function PageIntro({ image, heading, subheading }) {
 	return (
-		<div className="lg:flex justify-between items-center m-auto lg:px-8 bg-cover lg:space-y-0 space-y-10">
+		<div className="lg:flex justify-between items-center m-auto lg:px-8 bg-cover lg:space-y-0 space-y-10 md:mt-20 mt-10">
 			<div className="imageSection lg:flex-none flex justify-center">
 				<div className="image">
 					<Image

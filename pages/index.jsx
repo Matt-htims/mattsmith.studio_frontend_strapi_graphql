@@ -3,11 +3,11 @@ import Image from "next/image";
 import { fetcher } from "../lib/api";
 
 // Components
-import PageIntro from "../components/PageIntro";
-import SideBySideText from "../components/SideBySideText";
-import TripleExplainer from "../components/TripleExplainer";
-import InfoGallery from "../components/InfoGallery";
-import CTAsection from "../components/CTAsection";
+import PageIntro from "../components/layout/PageIntro";
+import SideBySideText from "../components/layout/SideBySideText";
+import TripleExplainer from "../components/layout/TripleExplainer";
+import InfoGallery from "../components/layout/InfoGallery";
+import CTAsection from "../components/layout/CTAsection";
 
 export default function Home({ homePage, pageIntro, services, myWork }) {
 	// console.log(homePage);
@@ -29,7 +29,6 @@ export default function Home({ homePage, pageIntro, services, myWork }) {
 			</Head>
 
 			<main>
-				<div className="pt-40"></div>
 				<PageIntro
 					image={
 						process.env.NEXT_PUBLIC_STRAPI_URL +
@@ -79,6 +78,12 @@ export async function getStaticProps() {
 	const myWorkResponse = await fetcher("home-page", {
 		populate: ["myWorks", "myWorks.works", "myWorks.works.image"],
 	});
+
+	const res = await fetcher("works", {
+		fields: ["slug"],
+	});
+
+	console.log(res.data);
 
 	return {
 		props: {

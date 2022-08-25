@@ -6,6 +6,9 @@ module.exports = {
 	],
 	theme: {
 		extend: {
+			screens: {
+				"2xl": "1620px",
+			},
 			fontFamily: {
 				spaceGrotesk: ["Space Grotesk", "sans-serif"],
 				inter: ["Inter", "sans-serif"],
