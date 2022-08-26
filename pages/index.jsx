@@ -40,6 +40,8 @@ const HOMEPAGE_QUERY = `query MyQuery {
 				bgColor
 			  }
 			}
+			slug
+			link
 		  }
 		}
 		... on PageIntroRecord {
@@ -142,7 +144,7 @@ export default function Home({ data }) {
 					title={myServices.title}
 					contentArray={myServices.rows}
 				/>
-				{/* <InfoGallery title={myWork.title} contentArray={myWork.works} /> */}
+				<InfoGallery title={myWork.title} contentArray={myWork.works} />
 				<CTAsection
 					cta={ctaSection.title}
 					body={ctaSection.subtitle}

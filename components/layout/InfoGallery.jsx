@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { Image } from "react-datocms";
 import Link from "next/link";
 
 export default function InfoGallery({ title, contentArray }) {
@@ -11,24 +11,19 @@ export default function InfoGallery({ title, contentArray }) {
 				{contentArray &&
 					contentArray.map((content) => (
 						<div key={content.id} className="">
-							<Link href={`/work/${content.attributes.slug}`}>
+							<Link href={`/work/${content.slug}`}>
 								<a>
 									<div className="overflow-hidden shadow-xl hover:shadow-2xl hover:cursor-pointer rounded-lg transition-all">
 										<Image
-											src={
-												process.env.NEXT_PUBLIC_STRAPI_URL +
-												content.attributes.image.data.attributes.url
-											}
-											alt="Triple explainer image"
-											height={content.attributes.image.data.attributes.height}
-											width={content.attributes.image.data.attributes.width}
+											data={content.image.responsiveImage}
+											alt={content.name}
 										/>
 										<div className="text bg-textBlue-dark text-offWhite px-6 py-7 lg:h-36 h-32 space-y-3 flex flex-col justify-between">
 											<h3 className="font-spaceGrotesk font-medium text-xl">
-												{content.attributes.name}
+												{content.name}
 											</h3>
 											<p className="text-sm font-light">
-												{content.attributes.description}
+												{content.description}
 											</p>
 										</div>
 									</div>
