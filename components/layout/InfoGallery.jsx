@@ -2,6 +2,7 @@ import { Image } from "react-datocms";
 import Link from "next/link";
 
 export default function InfoGallery({ title, contentArray }) {
+	console.log(contentArray);
 	return (
 		<div className="lg:mt-26 mt-24">
 			<h2 className="font-spaceGrotesk font-medium md:text-5xl text-4xl text-center mb-16 text-textBlue-dark">

@@ -1,5 +1,7 @@
-import React from "react";
-import { fetcher } from "../../lib/api";
+import { request } from "../../lib/datocms";
+
+// Queries
+import { WORKS_QUERY } from "../../lib/queries";
 
 // Components
 import InfoGallery from "../../components/layout/InfoGallery";
@@ -16,11 +18,9 @@ export default function index({ data }) {
 }
 
 export async function getStaticProps() {
-	const res = await fetcher("works", {
-		populate: ["image"],
-	});
+	const res = await request({ query: WORKS_QUERY, variables: {} });
 
-	const data = res.data;
+	const data = res.allWorks;
 
 	return {
 		props: {

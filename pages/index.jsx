@@ -1,116 +1,15 @@
 import Head from "next/head";
 import { request } from "../lib/datocms";
 
+// Query
+import { HOMEPAGE_QUERY } from "../lib/queries";
+
 // Components
 import PageIntro from "../components/layout/PageIntro";
 import SideBySideText from "../components/layout/SideBySideText";
 import TripleExplainer from "../components/layout/TripleExplainer";
 import InfoGallery from "../components/layout/InfoGallery";
 import CTAsection from "../components/layout/CTAsection";
-
-const HOMEPAGE_QUERY = `query MyQuery {
-	homePage {
-	  homePage {
-		... on CtaSectionRecord {
-		  id
-		  buttonLink
-		  buttonText
-		  subtitle
-		  title
-		}
-		... on InfoGalleryRecord {
-		  id
-		  title
-		  works {
-			name
-			id
-			description
-			image {
-			  responsiveImage {
-				srcSet
-				webpSrcSet
-				sizes
-				src
-				height
-				width
-				aspectRatio
-				alt
-				title
-				base64
-				bgColor
-			  }
-			}
-			slug
-			link
-		  }
-		}
-		... on PageIntroRecord {
-		  id
-		  title
-		  subtitle
-		  image {
-			responsiveImage {
-			  alt
-			  aspectRatio
-			  base64
-			  bgColor
-			  height
-			  sizes
-			  src
-			  srcSet
-			  title
-			  webpSrcSet
-			  width
-			}
-		  }
-		}
-		... on SideBySideTextRecord {
-		  id
-		  largeText
-		  largeOnLeft
-		  smallText(markdown: true)
-		}
-		... on TripleExplainerRecord {
-		  id
-		  title
-		  rows {
-			id
-			copy
-			bottomText2
-			bottomText
-			title
-			icon {
-			  responsiveImage {
-				alt
-				aspectRatio
-				base64
-				bgColor
-				height
-				sizes
-				src
-				srcSet
-				title
-				webpSrcSet
-				width
-			  }
-			}
-		  }
-		}
-	  }
-	  id
-	}
-  }
-  `;
-
-export async function getStaticProps() {
-	const data = await request({
-		query: HOMEPAGE_QUERY,
-		variables: {},
-	});
-	return {
-		props: { data },
-	};
-}
 
 export default function Home({ data }) {
 	const pageIntro = data.homePage.homePage[0];
@@ -154,4 +53,14 @@ export default function Home({ data }) {
 			</main>
 		</div>
 	);
+}
+
+export async function getStaticProps() {
+	const data = await request({
+		query: HOMEPAGE_QUERY,
+		variables: {},
+	});
+	return {
+		props: { data },
+	};
 }

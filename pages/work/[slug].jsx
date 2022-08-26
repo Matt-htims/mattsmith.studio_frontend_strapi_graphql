@@ -1,7 +1,10 @@
-import Image from "next/image";
+import { Image } from "react-datocms";
 import Link from "next/link";
-import { fetcher } from "../../lib/api";
 import { FiArrowLeft } from "react-icons/fi";
+import { request } from "../../lib/datocms";
+
+// Queries
+import { PATHS_QUERY, WORK_QUERY } from "../../lib/queries";
 
 export default function Post({ work }) {
 	return (
@@ -24,25 +27,17 @@ export default function Post({ work }) {
 				</a>
 			</div>
 			<div className="shadow-xl">
-				<Image
-					src={
-						process.env.NEXT_PUBLIC_STRAPI_URL +
-						work.fullScreenImage.data.attributes.url
-					}
-					alt="Triple explainer image"
-					height={work.fullScreenImage.data.attributes.height}
-					width={work.fullScreenImage.data.attributes.width}
-				/>
+				<Image data={work.fullScreenImage.responsiveImage} alt={work.name} />
 			</div>
 		</div>
 	);
 }
 
 export async function getStaticPaths() {
-	const res = await fetcher("works", {});
+	const res = await request({ query: PATHS_QUERY, variables: {} });
 
-	const paths = res.data.map((work) => ({
-		params: { slug: work.attributes.slug },
+	const paths = res.allWorks.map((work) => ({
+		params: { slug: work.slug },
 	}));
 
 	return {
@@ -52,18 +47,12 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-	const { slug } = params;
-
-	const res = await fetcher("works", {
-		filters: {
-			slug: {
-				$eq: slug,
-			},
-		},
-		populate: "fullScreenImage",
+	const res = await request({
+		query: WORK_QUERY,
+		variables: { slug: params.slug },
 	});
 
-	const work = res.data[0].attributes;
+	const work = res.work;
 
 	return {
 		props: { work },
