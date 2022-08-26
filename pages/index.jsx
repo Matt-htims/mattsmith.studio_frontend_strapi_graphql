@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import { request } from "../lib/datocms";
 
 // Components
@@ -9,12 +8,102 @@ import TripleExplainer from "../components/layout/TripleExplainer";
 import InfoGallery from "../components/layout/InfoGallery";
 import CTAsection from "../components/layout/CTAsection";
 
-const HOMEPAGE_QUERY = ``;
+const HOMEPAGE_QUERY = `query MyQuery {
+	homePage {
+	  homePage {
+		... on CtaSectionRecord {
+		  id
+		  buttonLink
+		  buttonText
+		  subtitle
+		  title
+		}
+		... on InfoGalleryRecord {
+		  id
+		  title
+		  works {
+			name
+			id
+			description
+			image {
+			  responsiveImage {
+				srcSet
+				webpSrcSet
+				sizes
+				src
+				height
+				width
+				aspectRatio
+				alt
+				title
+				base64
+				bgColor
+			  }
+			}
+		  }
+		}
+		... on PageIntroRecord {
+		  id
+		  title
+		  subtitle
+		  image {
+			responsiveImage {
+			  alt
+			  aspectRatio
+			  base64
+			  bgColor
+			  height
+			  sizes
+			  src
+			  srcSet
+			  title
+			  webpSrcSet
+			  width
+			}
+		  }
+		}
+		... on SideBySideTextRecord {
+		  id
+		  largeText
+		  largeOnLeft
+		  smallText(markdown: true)
+		}
+		... on TripleExplainerRecord {
+		  id
+		  title
+		  rows {
+			id
+			copy
+			bottomText2
+			bottomText
+			title
+			icon {
+			  responsiveImage {
+				alt
+				aspectRatio
+				base64
+				bgColor
+				height
+				sizes
+				src
+				srcSet
+				title
+				webpSrcSet
+				width
+			  }
+			}
+		  }
+		}
+	  }
+	  id
+	}
+  }
+  `;
 
 export async function getStaticProps() {
 	const data = await request({
 		query: HOMEPAGE_QUERY,
-		variables: { limit: 10 },
+		variables: {},
 	});
 	return {
 		props: { data },
@@ -22,7 +111,13 @@ export async function getStaticProps() {
 }
 
 export default function Home({ data }) {
-	console.log(data);
+	const pageIntro = data.homePage.homePage[0];
+	const sideBySideText = data.homePage.homePage[1];
+	const myServices = data.homePage.homePage[2];
+	const myWork = data.homePage.homePage[3];
+	const ctaSection = data.homePage.homePage[4];
+
+	console.log(pageIntro, sideBySideText, myServices, myWork, ctaSection);
 	return (
 		<div className="">
 			<Head>
@@ -33,33 +128,28 @@ export default function Home({ data }) {
 				/>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<h1>Hello from the home</h1>
-			{/* <main>
+			<main>
 				<PageIntro
-					image={
-						process.env.NEXT_PUBLIC_STRAPI_URL +
-						pageIntro.image.data.attributes.url
-					}
+					image={pageIntro.image}
 					heading={pageIntro.title}
 					subheading={pageIntro.subtitle}
 				/>
 				<SideBySideText
-					largeText={homePage.leadText.largeText}
-					smallText1={homePage.leadText.smallText1}
-					smallText2={homePage.leadText.smallText2}
+					largeText={sideBySideText.largeText}
+					smallText={sideBySideText.smallText}
 				/>
-				<TripleExplainer
-					title={services.title}
-					contentArray={services.individualServices}
+				{/* <TripleExplainer
+					title={myServices.title}
+					contentArray={myServices.rows}
 				/>
-				<InfoGallery title={myWork.title} contentArray={myWork.works.data} />
+				<InfoGallery title={myWork.title} contentArray={myWork.works} /> */}
 				<CTAsection
-					cta={homePage.contact.mainText}
-					body={homePage.contact.subText}
-					buttonLink={homePage.contact.buttonLink}
-					buttonText={homePage.contact.buttonText}
+					cta={ctaSection.title}
+					body={ctaSection.subtitle}
+					buttonLink={ctaSection.buttonLink}
+					buttonText={ctaSection.buttonText}
 				/>
-			</main> */}
+			</main>
 		</div>
 	);
 }
