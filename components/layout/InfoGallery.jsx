@@ -2,13 +2,12 @@ import { Image } from "react-datocms";
 import Link from "next/link";
 
 export default function InfoGallery({ title, contentArray }) {
-	console.log(contentArray);
 	return (
 		<div className="lg:mt-26 mt-24">
 			<h2 className="font-spaceGrotesk font-medium md:text-5xl text-4xl text-center mb-16 text-textBlue-dark">
 				{title}
 			</h2>
-			<div className="content lg:flex flex-wra justify-between lg:space-x-10 lg:space-y-0 space-y-9 min-w-[600px]">
+			<div className="content lg:flex justify-between lg:space-x-10 lg:space-y-0 space-y-9">
 				{contentArray &&
 					contentArray.map((content) => (
 						<div key={content.id} className="">
