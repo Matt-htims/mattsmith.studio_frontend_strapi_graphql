@@ -17,8 +17,6 @@ export default function Home({ data }) {
 	const myServices = data.homePage.homePage[2];
 	const myWork = data.homePage.homePage[3];
 	const ctaSection = data.homePage.homePage[4];
-
-	console.log(myServices, myWork, ctaSection);
 	return (
 		<div className="">
 			<Head>
