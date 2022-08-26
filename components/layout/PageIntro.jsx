@@ -1,16 +1,11 @@
-import Image from "next/image";
+import { Image } from "react-datocms";
 
 export default function PageIntro({ image, heading, subheading }) {
 	return (
 		<div className="lg:flex justify-between items-center m-auto lg:px-8 bg-cover lg:space-y-0 space-y-10 md:mt-20 mt-10">
 			<div className="imageSection lg:flex-none flex justify-center">
-				<div className="image">
-					<Image
-						src={image}
-						width={436}
-						height={429}
-						alt="Image of Matt Smith"
-					/>
+				<div className="image w-[436px] w-[429px]">
+					<Image data={image.responsiveImage} alt={heading} />
 				</div>
 				<div className="blob"></div>
 			</div>

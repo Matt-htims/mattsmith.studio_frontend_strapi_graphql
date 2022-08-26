@@ -1,4 +1,4 @@
-export default function SideBySideText({ largeText, smallText1, smallText2 }) {
+export default function SideBySideText({ largeText, smallText }) {
 	return (
 		<div className="md:flex justify-between items-center lg:mt-20 mt-14 md:space-y-0 space-y-6">
 			<div className="w-full">
@@ -10,8 +10,10 @@ export default function SideBySideText({ largeText, smallText1, smallText2 }) {
 			</div>
 			<div className="w-full">
 				<div className="smallText md:w-11/12 ml-auto lg:text-xl text-lg md:space-y-6 space-y-3 font-light">
-					<p>{smallText1}</p>
-					<p>{smallText2}</p>
+					<div
+						className="space-y-5"
+						dangerouslySetInnerHTML={{ __html: smallText }}
+					></div>
 				</div>
 			</div>
 		</div>
