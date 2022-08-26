@@ -117,7 +117,7 @@ export default function Home({ data }) {
 	const myWork = data.homePage.homePage[3];
 	const ctaSection = data.homePage.homePage[4];
 
-	console.log(pageIntro, sideBySideText, myServices, myWork, ctaSection);
+	console.log(myServices, myWork, ctaSection);
 	return (
 		<div className="">
 			<Head>
@@ -138,11 +138,11 @@ export default function Home({ data }) {
 					largeText={sideBySideText.largeText}
 					smallText={sideBySideText.smallText}
 				/>
-				{/* <TripleExplainer
+				<TripleExplainer
 					title={myServices.title}
 					contentArray={myServices.rows}
 				/>
-				<InfoGallery title={myWork.title} contentArray={myWork.works} /> */}
+				{/* <InfoGallery title={myWork.title} contentArray={myWork.works} /> */}
 				<CTAsection
 					cta={ctaSection.title}
 					body={ctaSection.subtitle}

@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+import { Image } from "react-datocms";
 
 export default function TripleExplainer({ title, contentArray }) {
 	return (
@@ -14,16 +14,8 @@ export default function TripleExplainer({ title, contentArray }) {
 							key={content.id}
 							className="text-center lg:border-b-0 border-b-2 border-[#DEE1ED] last:border-b-0 lg:pb-0 pb-16"
 						>
-							<div className="image mb-8">
-								<Image
-									src={
-										process.env.NEXT_PUBLIC_STRAPI_URL +
-										content.image.data.attributes.url
-									}
-									alt="Triple explainer image"
-									height={80}
-									width={80}
-								/>
+							<div className="image mb-8 flex justify-center">
+								<Image data={content.icon.responsiveImage} alt={title} />
 							</div>
 							<div className="flex flex-col justify-between h-64">
 								<h2 className="font-spaceGrotesk font-medium text-2xl">
