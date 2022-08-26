@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
-import { fetcher } from "../lib/api";
+import { request } from "../lib/datocms";
 
 // Components
 import PageIntro from "../components/layout/PageIntro";
@@ -9,14 +9,20 @@ import TripleExplainer from "../components/layout/TripleExplainer";
 import InfoGallery from "../components/layout/InfoGallery";
 import CTAsection from "../components/layout/CTAsection";
 
-export default function Home({ homePage, pageIntro, services, myWork }) {
-	// console.log(homePage);
-	// console.log("------------------------------------");
-	// console.log(pageIntro);
-	// console.log("------------------------------------");
-	// console.log(services);
-	// console.log("------------------------------------");
-	// console.log(myWork);
+const HOMEPAGE_QUERY = ``;
+
+export async function getStaticProps() {
+	const data = await request({
+		query: HOMEPAGE_QUERY,
+		variables: { limit: 10 },
+	});
+	return {
+		props: { data },
+	};
+}
+
+export default function Home({ data }) {
+	console.log(data);
 	return (
 		<div className="">
 			<Head>
@@ -27,8 +33,8 @@ export default function Home({ homePage, pageIntro, services, myWork }) {
 				/>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-
-			<main>
+			<h1>Hello from the home</h1>
+			{/* <main>
 				<PageIntro
 					image={
 						process.env.NEXT_PUBLIC_STRAPI_URL +
@@ -53,38 +59,7 @@ export default function Home({ homePage, pageIntro, services, myWork }) {
 					buttonLink={homePage.contact.buttonLink}
 					buttonText={homePage.contact.buttonText}
 				/>
-			</main>
+			</main> */}
 		</div>
 	);
-}
-
-export async function getStaticProps() {
-	const homePageResponse = await fetcher("home-page", {
-		populate: "*",
-	});
-
-	const pageIntroResponse = await fetcher("home-page", {
-		populate: ["pageIntro", "pageIntro.image"],
-	});
-
-	const servicesResponse = await fetcher("home-page", {
-		populate: [
-			"services",
-			"services.individualServices",
-			"services.individualServices.image",
-		],
-	});
-
-	const myWorkResponse = await fetcher("home-page", {
-		populate: ["myWorks", "myWorks.works", "myWorks.works.image"],
-	});
-
-	return {
-		props: {
-			homePage: homePageResponse.data.attributes,
-			pageIntro: pageIntroResponse.data.attributes.pageIntro,
-			services: servicesResponse.data.attributes.services,
-			myWork: myWorkResponse.data.attributes.myWorks,
-		},
-	};
 }
