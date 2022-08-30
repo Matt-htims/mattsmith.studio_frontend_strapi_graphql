@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-export default function BasicScroll({ content }) {
+export default function BasicScroll({ content, className }) {
 	const scroll = {
 		initial: { opacity: 0, y: 30 },
 		animate: {
@@ -13,7 +13,12 @@ export default function BasicScroll({ content }) {
 		},
 	};
 	return (
-		<motion.div variants={scroll} initial="initial" whileInView="animate">
+		<motion.div
+			variants={scroll}
+			initial="initial"
+			whileInView="animate"
+			className={className}
+		>
 			{content}
 		</motion.div>
 	);
