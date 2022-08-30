@@ -1,7 +1,7 @@
 import React from "react";
 import { Image } from "react-datocms";
 
-import BasicScroll from "../animations/basicScroll";
+import BasicScroll from "../animations/BasicScroll";
 
 export default function TripleExplainer({ title, contentArray }) {
 	return (
@@ -12,13 +12,10 @@ export default function TripleExplainer({ title, contentArray }) {
 			<div className="content lg:flex justify-around items-center lg:space-y-0 space-y-16">
 				{contentArray &&
 					contentArray.map((content) => (
-						<>
+						<div key={content.id}>
 							<BasicScroll
 								content={
-									<div
-										key={content.id}
-										className="text-center lg:border-b-0 border-b-2 border-[#DEE1ED] last:border-b-0 lg:pb-0 pb-16"
-									>
+									<div className="text-center lg:border-b-0 border-b-2 border-[#DEE1ED] last:border-b-0 lg:pb-0 pb-16">
 										<div className="image mb-8 flex justify-center">
 											<Image data={content.icon.responsiveImage} alt={title} />
 										</div>
@@ -41,7 +38,7 @@ export default function TripleExplainer({ title, contentArray }) {
 									</div>
 								}
 							/>
-						</>
+						</div>
 					))}
 			</div>
 		</div>

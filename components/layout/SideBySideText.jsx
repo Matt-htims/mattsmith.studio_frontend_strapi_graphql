@@ -1,5 +1,5 @@
 // Components
-import BasicScroll from "../animations/basicScroll";
+import BasicScroll from "../animations/BasicScroll";
 
 export default function SideBySideText({ largeText, smallText }) {
 	return (

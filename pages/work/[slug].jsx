@@ -3,6 +3,8 @@ import Link from "next/link";
 import { FiArrowLeft } from "react-icons/fi";
 import { request } from "../../lib/datocms";
 
+import BasicScroll from "../../components/animations/BasicScroll";
+
 // Queries
 import { PATHS_QUERY, WORK_QUERY } from "../../lib/queries";
 
@@ -26,9 +28,16 @@ export default function Post({ work }) {
 					<p className="text-textBlue-light font-light">Visit website</p>
 				</a>
 			</div>
-			<div className="shadow-xl">
-				<Image data={work.fullScreenImage.responsiveImage} alt={work.name} />
-			</div>
+			<BasicScroll
+				content={
+					<div className="shadow-2xl">
+						<Image
+							data={work.fullScreenImage.responsiveImage}
+							alt={work.name}
+						/>
+					</div>
+				}
+			/>
 		</div>
 	);
 }
