@@ -17,7 +17,11 @@ export default function TripleExplainer({ title, contentArray }) {
 								content={
 									<div className="text-center lg:border-b-0 border-b-2 border-[#DEE1ED] last:border-b-0 lg:pb-0 pb-16">
 										<div className="image mb-8 flex justify-center">
-											<Image data={content.icon.responsiveImage} alt={title} />
+											<Image
+												lazyLoad={false}
+												data={content.icon.responsiveImage}
+												alt={title}
+											/>
 										</div>
 										<div className="flex flex-col justify-between h-64">
 											<h2 className="font-spaceGrotesk font-medium text-2xl">
