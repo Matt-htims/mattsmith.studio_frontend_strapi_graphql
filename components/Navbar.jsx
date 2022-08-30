@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Router from "next/router";
 import Link from "next/link";
-
-import { FiMenu, FiX } from "react-icons/fi";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 function Navbar({ brand, items }) {
 	const [activeIndex, setActiveIndex] = useState(-1);
@@ -24,17 +22,14 @@ function Navbar({ brand, items }) {
 		return () => Router.events.off("routeChangeComplete", handleRouteChange);
 	}, [items]);
 
-	function handleTray() {
-		setActive(!active);
-	}
-
-	function closeTray() {
-		setActive(false);
-	}
-
 	return (
 		<div className="sticky top-0 w-full z-50">
-			<nav className="navbar md:py-6 py-5 text-textBlue bg-offWhite z-50">
+			<motion.nav
+				animate={{ y: 0, opacity: 1 }}
+				initial={{ y: -72, opacity: 0 }}
+				transition={{ duration: 1, ease: [0.6, 0.05, -0.01, 0.9] }}
+				className="navbar md:py-6 py-5 text-textBlue bg-offWhite z-50"
+			>
 				<div className="flex justify-between items-center max-w-screen-2xl m-auto md:px-12 px-6">
 					<Link href="/">
 						<a>
@@ -52,19 +47,27 @@ function Navbar({ brand, items }) {
 								className="items"
 							>
 								{item.id === "2k3jfl23k" ? (
-									<a className="md:text-lg text-base text-offWhite md:px-5 px-4 md:py-4 py-3 bg-ctaOrange hover:bg-textBlue rounded-full shadow-md transition-all">
-										{item.title}
+									<a>
+										<motion.button
+											whileHover={{ scale: 1.08 }}
+											whileTap={{ scale: 0.9 }}
+											className="md:text-lg text-base text-offWhite md:px-5 px-4 md:py-4 py-3 bg-ctaOrange hover:bg-textBlue rounded-full shadow-md transition-colors"
+										>
+											{item.title}
+										</motion.button>
 									</a>
 								) : (
-									<a className="text-lg hidden lg:inline-block text-textBlue-light py-3 mx-3 mb-[2px] hover:mb-0 hover:border-b-2 hover:text-textBlue-dark transition:all border-textBlue-light">
-										{item.title}
+									<a>
+										<button className="text-lg hidden lg:inline-block text-textBlue-light py-3 mx-3 mb-[2px] hover:mb-0 hover:border-b-2 hover:text-textBlue-dark transition:all border-textBlue-light">
+											{item.title}
+										</button>
 									</a>
 								)}
 							</Link>
 						))}
 					</div>
 				</div>
-			</nav>
+			</motion.nav>
 		</div>
 	);
 }

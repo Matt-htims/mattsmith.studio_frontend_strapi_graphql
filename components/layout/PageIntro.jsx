@@ -1,4 +1,5 @@
 import { Image } from "react-datocms";
+import { TypeAnimation } from "react-type-animation";
 
 export default function PageIntro({ image, heading, subheading }) {
 	return (
@@ -9,9 +10,14 @@ export default function PageIntro({ image, heading, subheading }) {
 				</div>
 			</div>
 			<div className="textSection lg:max-w-[47rem] m-auto space-y-5 lg:pl-20">
-				<p className="lg:text-6xl text-5xl font-spaceGrotesk text-textBlue-dark font-medium">
-					{heading}
-				</p>
+				<TypeAnimation
+					sequence={[500, heading]}
+					speed={10}
+					wrapper="p"
+					cursor={true}
+					repeat={1}
+					className="lg:text-6xl text-5xl font-spaceGrotesk text-textBlue-dark font-medium"
+				/>
 				<h1 className="lg:text-4xl text-3xl font-extralight tracking-wide leading-snug">
 					{subheading}
 				</h1>

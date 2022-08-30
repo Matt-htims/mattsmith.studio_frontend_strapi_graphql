@@ -7,8 +7,8 @@ export default function BasicScroll({ content }) {
 			opacity: 1,
 			y: 0,
 			transition: {
-				duration: 0.8,
-				type: "easeOut",
+				duration: 1,
+				ease: [0.6, 0.05, -0.01, 0.9],
 			},
 		},
 	};
