@@ -12,7 +12,7 @@ export default function PageIntro({ image, heading, subheading }) {
 			<div className="textSection lg:max-w-[47rem] m-auto space-y-5 lg:pl-20">
 				<TypeAnimation
 					sequence={[500, heading]}
-					speed={10}
+					speed={0}
 					wrapper="p"
 					cursor={true}
 					repeat={1}
