@@ -1,12 +1,19 @@
 import React from "react";
 import { Image } from "react-datocms";
 
+import BasicScroll from "../animations/basicScroll";
+
 export default function TripleExplainer({ title, contentArray }) {
 	return (
 		<div className="bg-lightBlue px-8 lg:py-20 pt-16 pb-4 lg:mt-26 mt-24 rounded-3xl drop-shadow-md">
-			<h2 className="font-spaceGrotesk font-medium md:text-5xl text-4xl text-center md:mb-24 mb-16 text-textBlue-dark">
-				{title}
-			</h2>
+			<BasicScroll
+				content={
+					<h2 className="font-spaceGrotesk font-medium md:text-5xl text-4xl text-center md:mb-24 mb-16 text-textBlue-dark">
+						{title}
+					</h2>
+				}
+			/>
+
 			<div className="content lg:flex justify-around items-center lg:space-y-0 space-y-16">
 				{contentArray &&
 					contentArray.map((content) => (
