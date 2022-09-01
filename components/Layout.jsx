@@ -1,4 +1,4 @@
-import React from "react";
+import Image from "next/image";
 
 // Components
 import Footer from "./Footer";
@@ -8,7 +8,7 @@ export default function Layout({ children }) {
 	return (
 		<div className=" text-textBlue bg-offWhite">
 			<Navbar
-				brand={<p>Matt Smith</p>}
+				brand={<Image src="/logo.png" alt="logo" height={56} width={175} />}
 				items={[
 					{ url: "/work", title: "My work", id: "23jh23lk4j2" },
 					{

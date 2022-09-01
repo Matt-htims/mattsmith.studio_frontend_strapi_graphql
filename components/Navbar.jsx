@@ -31,13 +31,15 @@ function Navbar({ brand, items }) {
 				className="navbar md:py-6 py-5 text-textBlue bg-offWhite z-50"
 			>
 				<div className="flex justify-between items-center max-w-screen-2xl m-auto md:px-12 px-6">
-					<Link href="/">
-						<a>
-							<div className="brand font-spaceGrotesk font-medium md:text-2xl text-xl hover:scale-105 transition-all">
-								{brand}
-							</div>
-						</a>
-					</Link>
+					<div className="pt-1">
+						<Link href="/">
+							<a>
+								<div className="brand font-spaceGrotesk font-medium md:text-2xl text-xl hover:scale-105 transition-all sm:w-[175px] w-[140px]">
+									{brand}
+								</div>
+							</a>
+						</Link>
+					</div>
 					<div className="items space-x-10">
 						{items.map((item, index) => (
 							<Link
