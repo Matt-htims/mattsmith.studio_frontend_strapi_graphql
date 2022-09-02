@@ -4,14 +4,20 @@ import Link from "next/link";
 import BasicScroll from "../animations/BasicScroll";
 
 export default function InfoGallery({ content }) {
+	let contentArray = [];
+	if (content.works) {
+		contentArray = content.works;
+	} else if (content.allWorks) {
+		contentArray = content.allWorks;
+	}
 	return (
 		<div className="lg:mt-26 mt-24">
 			<h2 className="font-spaceGrotesk font-medium md:text-5xl text-4xl text-center mb-16 text-textBlue-dark">
 				{content.title}
 			</h2>
 			<div className="content lg:flex justify-between lg:space-x-7 lg:space-y-0 space-y-9">
-				{content.works &&
-					content.works.map((content) => (
+				{contentArray &&
+					contentArray.map((content) => (
 						<div key={content.id}>
 							<BasicScroll
 								content={
