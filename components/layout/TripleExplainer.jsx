@@ -3,15 +3,15 @@ import { Image } from "react-datocms";
 
 import BasicScroll from "../animations/BasicScroll";
 
-export default function TripleExplainer({ title, contentArray }) {
+export default function TripleExplainer({ content }) {
 	return (
 		<div className="bg-lightBlue px-8 lg:py-20 pt-16 pb-4 lg:mt-26 mt-24 rounded-3xl drop-shadow-md">
 			<h2 className="font-spaceGrotesk font-medium md:text-5xl text-4xl text-center md:mb-24 mb-16 text-textBlue-dark">
-				{title}
+				{content.title}
 			</h2>
 			<div className="content lg:flex justify-around items-center lg:space-y-0 space-y-16">
-				{contentArray &&
-					contentArray.map((content) => (
+				{content.rows &&
+					content.rows.map((content) => (
 						<div key={content.id}>
 							<BasicScroll
 								content={
@@ -20,7 +20,7 @@ export default function TripleExplainer({ title, contentArray }) {
 											<Image
 												lazyLoad={false}
 												data={content.icon.responsiveImage}
-												alt={title}
+												alt={content.title}
 											/>
 										</div>
 										<div className="flex flex-col justify-between h-64">
