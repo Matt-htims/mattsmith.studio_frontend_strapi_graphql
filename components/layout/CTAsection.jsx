@@ -6,7 +6,6 @@ export default function CTAsection({ content }) {
 			<div className="text space-y-8 mb-14">
 				<h3 className="font-spaceGrotesk font-medium md:text-4xl text-3xl text-textBlue-dark">
 					{content.title}
-					hello
 				</h3>
 				<p className="md:text-2xl text-lg font-light">{content.subtitle}</p>
 			</div>
