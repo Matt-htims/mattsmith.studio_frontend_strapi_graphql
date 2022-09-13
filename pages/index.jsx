@@ -13,7 +13,7 @@ import CtaSection from "../components/layout/CtaSection";
 
 export default function Home({ data }) {
 	console.log(data);
-	console.log(data.homePage.data.attributes.homePage);
+	console.log(data.homePage);
 
 	const componentMapping = {
 		PageIntro,
@@ -23,11 +23,9 @@ export default function Home({ data }) {
 		CtaSection,
 	};
 
-	const dynamicComponents = data.homePage.data.attributes.homePage.map(
-		(block) => {
-			return block.__typename.replace("ComponentBlock", "");
-		}
-	);
+	const dynamicComponents = data.homePage.map((block) => {
+		return block.__typename.replace("ComponentBlock", "");
+	});
 
 	return (
 		<div>
@@ -40,14 +38,12 @@ export default function Home({ data }) {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<main>
+				<PageIntro content={data.homePage[0]} />
+				<SideBySideText content={data.homePage[1]} />
+				<TripleExplainer content={data.homePage[2]} />
 				{/* {dynamicComponents.map((componentName, n) => {
 					const Component = componentMapping[componentName];
-					return (
-						<Component
-							key={n}
-							content={data.homePage.data.attributes.homePage[n]}
-						/>
-					);
+					return <Component key={n} content={data.homePage[n]} />;
 				})} */}
 			</main>
 		</div>

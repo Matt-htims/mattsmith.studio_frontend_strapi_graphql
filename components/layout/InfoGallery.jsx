@@ -26,7 +26,7 @@ export default function InfoGallery({ content }) {
 											<div className="overflow-hidden shadow-xl hover:shadow-2xl hover:cursor-pointer rounded-lg transition-all">
 												<Image
 													src={
-														process.env.NEXT_STRAPI_URI +
+														process.env.NEXT_PUBLIC_STRAPI_URI +
 														content.attributes.image.data.attributes.formats
 															.large.url
 													}

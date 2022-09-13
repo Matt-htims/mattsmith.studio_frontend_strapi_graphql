@@ -10,7 +10,7 @@ export default function PageIntro({ content }) {
 			<div className="imageSection lg:flex-none flex justify-center">
 				<div className="image w-[436px] w-[429px]">
 					<Image
-						src={process.env.NEXT_STRAPI_URI + image.url}
+						src={process.env.NEXT_PUBLIC_STRAPI_URI + image.url}
 						alt={image.name}
 						width={image.width}
 						height={image.height}

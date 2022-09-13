@@ -18,10 +18,13 @@ export default function TripleExplainer({ content }) {
 									<div className="text-center lg:border-b-0 border-b-2 border-[#DEE1ED] last:border-b-0 lg:pb-0 pb-16">
 										<div className="image mb-8 flex justify-center">
 											<Image
-												src={content.image.data.url}
-												alt={content.image.data.alternativeText}
-												width={content.image.data.width}
-												height={content.image.data.height}
+												src={
+													process.env.NEXT_PUBLIC_STRAPI_URI +
+													content.image.data.attributes.url
+												}
+												alt={content.image.data.attributes.alternativeText}
+												width={content.image.data.attributes.width}
+												height={content.image.data.attributes.height}
 											/>
 										</div>
 										<div className="flex flex-col justify-between h-64">
