@@ -36,6 +36,8 @@ export default function Post({ work }) {
 				content={
 					<div className="shadow-2xl">
 						<Image
+							placeholder="blur"
+							blurDataURL={image.placeholder}
 							src={process.env.NEXT_PUBLIC_STRAPI_URI + image.url}
 							alt={image.alternativeText}
 							height={image.height}

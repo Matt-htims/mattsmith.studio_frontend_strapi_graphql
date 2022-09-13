@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import BasicScroll from "../animations/BasicScroll";
+import { BasicScroll } from "../animations/BasicScroll";
 
 export default function InfoGallery({ content }) {
 	let contentArray = [];

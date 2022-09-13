@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-import BasicScroll from "../animations/BasicScroll";
+import { BasicScroll } from "../animations/BasicScroll";
 
 export default function TripleExplainer({ content }) {
 	return (
