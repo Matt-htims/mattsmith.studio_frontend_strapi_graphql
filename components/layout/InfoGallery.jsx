@@ -1,4 +1,4 @@
-import { Image } from "react-datocms";
+import Image from "next/image";
 import Link from "next/link";
 
 import BasicScroll from "../animations/BasicScroll";
@@ -6,7 +6,7 @@ import BasicScroll from "../animations/BasicScroll";
 export default function InfoGallery({ content }) {
 	let contentArray = [];
 	if (content.works) {
-		contentArray = content.works;
+		contentArray = content.works.data;
 	} else if (content.allWorks) {
 		contentArray = content.allWorks;
 	}
@@ -21,19 +21,34 @@ export default function InfoGallery({ content }) {
 						<div key={content.id}>
 							<BasicScroll
 								content={
-									<Link href={`/work/${content.slug}`}>
+									<Link href={`/work/${content.attributes.slug}`}>
 										<a>
 											<div className="overflow-hidden shadow-xl hover:shadow-2xl hover:cursor-pointer rounded-lg transition-all">
 												<Image
-													data={content.image.responsiveImage}
-													alt={content.name}
+													src={
+														process.env.NEXT_STRAPI_URI +
+														content.attributes.image.data.attributes.formats
+															.large.url
+													}
+													alt={
+														content.attributes.image.data.attributes
+															.alternativeText
+													}
+													width={
+														content.attributes.image.data.attributes.formats
+															.large.width
+													}
+													height={
+														content.attributes.image.data.attributes.formats
+															.large.height
+													}
 												/>
 												<div className="text bg-textBlue-dark text-offWhite px-6 py-7 lg:h-36 h-32 space-y-3 flex flex-col justify-between">
 													<h3 className="font-spaceGrotesk font-medium text-xl">
-														{content.name}
+														{content.attributes.name}
 													</h3>
 													<p className="text-sm font-light">
-														{content.description}
+														{content.attributes.description}
 													</p>
 												</div>
 											</div>

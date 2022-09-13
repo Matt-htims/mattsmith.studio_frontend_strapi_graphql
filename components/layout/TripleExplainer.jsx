@@ -1,5 +1,5 @@
 import React from "react";
-import { Image } from "react-datocms";
+import Image from "next/image";
 
 import BasicScroll from "../animations/BasicScroll";
 
@@ -10,17 +10,18 @@ export default function TripleExplainer({ content }) {
 				{content.title}
 			</h2>
 			<div className="content lg:flex justify-around items-center lg:space-y-0 space-y-16">
-				{content.rows &&
-					content.rows.map((content) => (
+				{content.individualServices &&
+					content.individualServices.map((content) => (
 						<div key={content.id}>
 							<BasicScroll
 								content={
 									<div className="text-center lg:border-b-0 border-b-2 border-[#DEE1ED] last:border-b-0 lg:pb-0 pb-16">
 										<div className="image mb-8 flex justify-center">
 											<Image
-												lazyLoad={false}
-												data={content.icon.responsiveImage}
-												alt={content.title}
+												src={content.image.data.url}
+												alt={content.image.data.alternativeText}
+												width={content.image.data.width}
+												height={content.image.data.height}
 											/>
 										</div>
 										<div className="flex flex-col justify-between h-64">

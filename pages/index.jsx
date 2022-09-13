@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { request } from "../lib/datocms";
+import { request } from "../lib/apollo";
 
 // Query
 import { HOMEPAGE_QUERY } from "../lib/queries";
@@ -9,20 +9,25 @@ import PageIntro from "../components/layout/PageIntro";
 import SideBySideText from "../components/layout/SideBySideText";
 import TripleExplainer from "../components/layout/TripleExplainer";
 import InfoGallery from "../components/layout/InfoGallery";
-import CTAsection from "../components/layout/CTAsection";
+import CtaSection from "../components/layout/CtaSection";
 
 export default function Home({ data }) {
+	console.log(data);
+	console.log(data.homePage.data.attributes.homePage);
+
 	const componentMapping = {
 		PageIntro,
 		SideBySideText,
 		TripleExplainer,
 		InfoGallery,
-		CTAsection,
+		CtaSection,
 	};
 
-	const dynamicComponents = data.homePage.homePage.map((block) => {
-		return block.blockName;
-	});
+	const dynamicComponents = data.homePage.data.attributes.homePage.map(
+		(block) => {
+			return block.__typename.replace("ComponentBlock", "");
+		}
+	);
 
 	return (
 		<div>
@@ -35,20 +40,28 @@ export default function Home({ data }) {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<main>
-				{dynamicComponents.map((componentName, n) => {
+				{/* {dynamicComponents.map((componentName, n) => {
 					const Component = componentMapping[componentName];
-					return <Component key={n} content={data.homePage.homePage[n]} />;
-				})}
+					return (
+						<Component
+							key={n}
+							content={data.homePage.data.attributes.homePage[n]}
+						/>
+					);
+				})} */}
 			</main>
 		</div>
 	);
 }
 
 export async function getStaticProps() {
-	const data = await request({
+	const response = await request({
 		query: HOMEPAGE_QUERY,
 		variables: {},
 	});
+
+	const data = response.homePage.data.attributes;
+
 	return {
 		props: { data },
 	};

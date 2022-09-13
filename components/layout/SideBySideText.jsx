@@ -12,10 +12,8 @@ export default function SideBySideText({ content }) {
 
 			<div className="w-full">
 				<div className="smallText md:w-12/12 ml-auto lg:text-xl text-lg md:space-y-6 space-y-3 font-light">
-					<div
-						className="space-y-5"
-						dangerouslySetInnerHTML={{ __html: content.smallText }}
-					></div>
+					<p>{content.smallText1}</p>
+					<p>{content.smallText2}</p>
 				</div>
 			</div>
 		</div>
