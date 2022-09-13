@@ -3,7 +3,7 @@ import Link from "next/link";
 import { FiArrowLeft } from "react-icons/fi";
 import { request } from "../../lib/apollo";
 
-import BasicScroll from "../../components/animations/BasicScroll";
+import { BasicScroll } from "../../components/animations/BasicScroll";
 
 // Queries
 import { PATHS_QUERY, WORK_QUERY } from "../../lib/queries";

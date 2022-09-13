@@ -1,7 +1,7 @@
 import { request } from "../../lib/apollo";
 
 // Queries
-import { WORKS_QUERY, PATHS_QUERY } from "../../lib/queries";
+import { WORKS_QUERY } from "../../lib/queries";
 
 // Components
 import InfoGallery from "../../components/layout/InfoGallery";
