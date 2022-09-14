@@ -4,12 +4,7 @@ import Link from "next/link";
 import { BasicScroll } from "../animations/BasicScroll";
 
 export default function InfoGallery({ content }) {
-	let contentArray = [];
-	if (content.works) {
-		contentArray = content.works.data;
-	} else if (content.allWorks) {
-		contentArray = content.allWorks;
-	}
+	const contentArray = content.works.data;
 	return (
 		<div className="lg:mt-26 mt-24">
 			<h2 className="font-spaceGrotesk font-medium md:text-5xl text-4xl text-center mb-16 text-textBlue-dark">
@@ -25,6 +20,10 @@ export default function InfoGallery({ content }) {
 										<a>
 											<div className="overflow-hidden shadow-xl hover:shadow-2xl hover:cursor-pointer rounded-lg transition-all">
 												<Image
+													placeholder="blur"
+													blurDataURL={
+														content.attributes.image.data.attributes.placeholder
+													}
 													src={
 														process.env.NEXT_PUBLIC_STRAPI_URI +
 														content.attributes.image.data.attributes.formats

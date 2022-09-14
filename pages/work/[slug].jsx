@@ -9,8 +9,6 @@ import { BasicScroll } from "../../components/animations/BasicScroll";
 import { PATHS_QUERY, WORK_QUERY } from "../../lib/queries";
 
 export default function Post({ work }) {
-	console.log(work);
-
 	const image = work.fullScreenImage.data.attributes;
 
 	return (
