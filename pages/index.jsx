@@ -12,6 +12,7 @@ import InfoGallery from "../components/layout/InfoGallery";
 import CtaSection from "../components/layout/CtaSection";
 
 export default function Home({ data }) {
+	console.log(data);
 	const componentMapping = {
 		PageIntro,
 		SideBySideText,
@@ -27,11 +28,19 @@ export default function Home({ data }) {
 	return (
 		<div>
 			<Head>
-				<title>mattsmith.studio</title>
+				<title>{data.seo.metaTitle}</title>
+				<meta name="description" content={data.seo.metaDescription} />
+				<meta name="keywords" content={data.seo.keywords} />
+				<meta name="image" content={data.seo.metaImage.data.attributes.url} />
 				<meta
-					name="description"
-					content="A freelance web designer &amp; developer based in London"
+					name="og:image"
+					content={
+						process.env.NEXT_PUBLIC_STRAPI_URI +
+						data.seo.metaImage.data.attributes.url
+					}
 				/>
+				<meta name="og:title" content={data.seo.metaTitle} />
+				<meta name="og:description" content={data.seo.metaDescription} />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<main>
