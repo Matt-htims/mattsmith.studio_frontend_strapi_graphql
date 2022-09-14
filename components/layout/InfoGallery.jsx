@@ -3,13 +3,16 @@ import Link from "next/link";
 
 import { BasicScroll } from "../animations/BasicScroll";
 
-export default function InfoGallery({ content }) {
+export default function InfoGallery({ content, title = true }) {
 	const contentArray = content.works.data;
 	return (
 		<div className="lg:mt-26 mt-24">
-			<h2 className="font-spaceGrotesk font-medium md:text-5xl text-4xl text-center mb-16 text-textBlue-dark">
-				{content.title}
-			</h2>
+			{title && (
+				<h2 className="font-spaceGrotesk font-medium md:text-5xl text-4xl text-center mb-16 text-textBlue-dark">
+					{content.title}
+				</h2>
+			)}
+
 			<div className="content lg:flex justify-between lg:space-x-7 lg:space-y-0 space-y-9">
 				{contentArray &&
 					contentArray.map((content) => (

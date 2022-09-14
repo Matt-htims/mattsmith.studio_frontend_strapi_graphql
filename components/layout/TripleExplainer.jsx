@@ -12,7 +12,10 @@ export default function TripleExplainer({ content }) {
 			<div className="content lg:flex justify-around items-center lg:space-y-0 space-y-16">
 				{content.individualServices &&
 					content.individualServices.map((content) => (
-						<div key={content.id}>
+						<div
+							key={content.id}
+							className="lg:border-b-0 border-b-2 last:border-b-0"
+						>
 							<BasicScroll
 								content={
 									<div className="text-center lg:border-b-0 border-b-2 border-[#DEE1ED] last:border-b-0 lg:pb-0 pb-16">
