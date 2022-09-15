@@ -8,7 +8,6 @@ import { WORKS_QUERY } from "../../lib/queries";
 import InfoGallery from "../../components/layout/InfoGallery";
 
 export default function index({ data }) {
-	console.log(data);
 	return (
 		<>
 			{data.seo && (

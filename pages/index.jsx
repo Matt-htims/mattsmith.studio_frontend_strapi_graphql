@@ -12,7 +12,6 @@ import InfoGallery from "../components/layout/InfoGallery";
 import CtaSection from "../components/layout/CtaSection";
 
 export default function Home({ data }) {
-	console.log(data);
 	const componentMapping = {
 		PageIntro,
 		SideBySideText,

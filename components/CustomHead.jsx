@@ -1,7 +1,6 @@
 import Head from "next/head";
 
 export default function CustomHead({ title, description, image, keywords }) {
-	console.log(title, description, image, keywords);
 	return (
 		<>
 			<Head>
