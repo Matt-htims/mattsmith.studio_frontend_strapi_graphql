@@ -47,7 +47,7 @@ export default function Post({ work }) {
 							<Image
 								placeholder="blur"
 								blurDataURL={image.placeholder}
-								src={process.env.NEXT_PUBLIC_STRAPI_URI + image.url}
+								src={image.url}
 								alt={image.alternativeText}
 								height={image.height}
 								width={image.width}
@@ -74,7 +74,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-	console.log(params);
 	const response = await request({
 		query: WORK_QUERY,
 		variables: {

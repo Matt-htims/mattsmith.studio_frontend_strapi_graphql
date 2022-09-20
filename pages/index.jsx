@@ -33,10 +33,7 @@ export default function Home({ data }) {
 				<meta name="image" content={data.seo.metaImage.data.attributes.url} />
 				<meta
 					name="og:image"
-					content={
-						process.env.NEXT_PUBLIC_STRAPI_URI +
-						data.seo.metaImage.data.attributes.url
-					}
+					content={data.seo.metaImage.data.attributes.url}
 				/>
 				<meta name="og:title" content={data.seo.metaTitle} />
 				<meta name="og:description" content={data.seo.metaDescription} />

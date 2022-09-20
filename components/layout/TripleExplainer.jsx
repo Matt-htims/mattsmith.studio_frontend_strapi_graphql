@@ -21,10 +21,7 @@ export default function TripleExplainer({ content }) {
 									<div className="text-center lg:border-b-0 border-b-2 border-[#DEE1ED] last:border-b-0 lg:pb-0 pb-16">
 										<div className="image mb-8 flex justify-center">
 											<Image
-												src={
-													process.env.NEXT_PUBLIC_STRAPI_URI +
-													content.image.data.attributes.url
-												}
+												src={content.image.data.attributes.url}
 												alt={content.image.data.attributes.alternativeText}
 												width={content.image.data.attributes.width}
 												height={content.image.data.attributes.height}

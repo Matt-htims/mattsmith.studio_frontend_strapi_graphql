@@ -12,7 +12,7 @@ export default function PageIntro({ content }) {
 					content={
 						<div className="image w-[436px] w-[429px]">
 							<Image
-								src={process.env.NEXT_PUBLIC_STRAPI_URI + image.url}
+								src={image.url}
 								alt={image.name}
 								width={image.width}
 								height={image.height}

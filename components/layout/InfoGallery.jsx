@@ -28,7 +28,6 @@ export default function InfoGallery({ content, title = true }) {
 														content.attributes.image.data.attributes.placeholder
 													}
 													src={
-														process.env.NEXT_PUBLIC_STRAPI_URI +
 														content.attributes.image.data.attributes.formats
 															.large.url
 													}
