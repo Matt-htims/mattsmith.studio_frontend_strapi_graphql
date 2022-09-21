@@ -15,14 +15,7 @@ export default function Post({ work }) {
 
 	return (
 		<>
-			{work.seo && (
-				<CustomHead
-					title={work.seo.metaTitle}
-					description={work.seo.metaDescription}
-					image={work.seo.metaImage.data.attributes.url}
-					keywords={work.seo.keywords}
-				/>
-			)}
+			{work.seo && <CustomHead seo={work.seo} />}
 			<div className="my-14 max-w-screen-lg m-auto relative min-h-screen">
 				<div className="text-sm lg:block hidden absolute top-2 text-textBlue-light">
 					<Link href="/work">

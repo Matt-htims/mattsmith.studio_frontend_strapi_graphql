@@ -1,34 +1,36 @@
 import Head from "next/head";
 
-export default function CustomHead({ title, description, image, keywords }) {
+export default function CustomHead({ seo }) {
 	return (
 		<>
 			<Head>
-				{title ? (
+				{seo.metaTitle ? (
 					<>
-						<title>{title}</title>
-						<meta name="og:title" content={title} />
+						<title>{seo.metaTitle}</title>
+						<meta name="og:title" content={seo.metaTitle} />
 					</>
 				) : (
 					""
 				)}
-				{description ? (
+				{seo.metaDescription ? (
 					<>
-						<meta name="description" content={description} />
-						<meta name="og:description" content={description} />
+						<meta name="description" content={seo.metaDescription} />
+						<meta name="og:description" content={seo.metaDescription} />
 					</>
 				) : (
 					""
 				)}
-				{description ? (
+				{seo.metaImage &&
+				seo.metaImage.data &&
+				seo.metaImage.data.attributes.url ? (
 					<>
-						<meta name="image" content={image} />
-						<meta name="og:image" content={image} />
+						<meta name="image" content={seo.metaImage.data.attributes.url} />
+						<meta name="og:image" content={seo.metaImage.data.attributes.url} />
 					</>
 				) : (
 					""
 				)}
-				{keywords ? <meta name="keywords" content={keywords} /> : ""}
+				{seo.keywords ? <meta name="keywords" content={seo.keywords} /> : ""}
 			</Head>
 		</>
 	);

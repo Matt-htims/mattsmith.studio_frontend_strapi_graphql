@@ -8,17 +8,9 @@ import { WORKS_QUERY } from "../../lib/queries";
 import InfoGallery from "../../components/layout/InfoGallery";
 
 export default function index({ data }) {
-	const test = {};
 	return (
 		<>
-			{data.seo && (
-				<CustomHead
-					title={data.seo.metaTitle}
-					description={data.seo.metaDescription}
-					image={data.seo.metaImage.data.attributes.url}
-					keywords={data.seo.keywords}
-				/>
-			)}
+			{data.seo && <CustomHead seo={data.seo} />}
 			<div className="min-h-screen mt-14 lg:mb-0 mb-14">
 				<h1 className="font-spaceGrotesk font-medium text-5xl mb-36 text-center text-textBlue-dark">
 					{data.work.title}
