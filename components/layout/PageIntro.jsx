@@ -10,7 +10,7 @@ export default function PageIntro({ content }) {
 			<div className="imageSection lg:flex-none flex justify-center">
 				<FadeIn
 					content={
-						<div className="image w-[436px] w-[429px]">
+						<div className="image max-w-[436px] max-h-[429px]">
 							<Image
 								src={image.url}
 								alt={image.name}
