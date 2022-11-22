@@ -1,7 +1,7 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
 
-import { BasicScroll } from "../animations/BasicScroll";
+import { BasicScroll } from '../animations/BasicScroll';
 
 export default function InfoGallery({ content, title = true }) {
 	const contentArray = content.works.data;
@@ -12,11 +12,11 @@ export default function InfoGallery({ content, title = true }) {
 					{content.title}
 				</h2>
 			)}
-
-			<div className="content lg:flex justify-between lg:space-x-7 lg:space-y-0 space-y-9">
+			{/* lg:flex justify-between lg:space-x-7 lg:space-y-0 space-y-9 */}
+			<div className="content lg:flex flex-wrap justify-between space-y-5 lg:space-y-0">
 				{contentArray &&
 					contentArray.map((content) => (
-						<div key={content.id}>
+						<div key={content.id} className="lg:basis-1/3 p-2">
 							<BasicScroll
 								content={
 									<Link href={`/work/${content.attributes.slug}`}>
